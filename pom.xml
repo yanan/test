@@ -24,7 +24,7 @@
         <url>http://ide-build-1:9090/userContent/hosts</url>
         <outputFileName>hosts</outputFileName>
         <!-- default target location, just to demonstrate the parameter -->
-        <outputDirectory>C:/</outputDirectory>
+        <outputDirectory>C:/Jenkins</outputDirectory>
       </configuration>
     </execution>
   </executions>
