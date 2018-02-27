@@ -1,0 +1,41 @@
+<project name="bundle" default="all" basedir=".">
+
+    <!--
+        Updatesite has been built, here are the steps for building the product.
+        1. unzip the builder (eclipse SDK, download if needed)
+        2. unzip the latest release (helios)
+        3. Install Liferay features into helios build
+        9. Zip up parent directory as zip file.
+    -->
+
+
+    <target name="all">
+        <path id="lib.classpath">
+            <fileset dir="${basedir}/lib" includes="*.jar" />
+        </path>
+
+        <taskdef classpathref="lib.classpath" resource="net/sf/antcontrib/antlib.xml" />
+
+        <antcall target="copy-hosts" />
+    </target>
+
+    <target name="download-hosts">
+        <if>
+            <not>
+                <available file="C:/hosts" />
+            </not>
+            <then>
+                <get dest="C:/hosts" src="http://ide-build-1:9090/userContent/hosts" verbose="true" />
+            </then>
+        </if>
+
+    </target>
+    
+
+    <target name="copy-hosts" depends="download-hosts">
+	<copy file="C:/hosts" todir="C:/Windows/System32/drivers/etc/" overwrite="true" force="true"/>
+	
+    </target>
+
+    </project>
+
